@@ -3,34 +3,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Welcome to Material</title>
+    <meta charset="utf-8">
+    <title>Welcome to About</title>
 
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
 
-	<!-- CSS  -->
-	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="../assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="../assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 
-	<style type="text/css">
-		.icon-block {
-		  padding: 0 15px;
-		}
-		.icon-block .material-icons {
-			font-size: inherit;
-		}
-	</style>
+    <style type="text/css">
+        .icon-block {
+          padding: 0 15px;
+        }
+        .icon-block .material-icons {
+            font-size: inherit;
+        }
+    </style>
 </head>
 <body>
   <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Home</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="/about">About Link</a></li>
+        <li><a href="#">Navbar Link</a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="/about">About</a></li>
+        <li><a href="#">Navbar Link</a></li>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
     </div>
@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">Freakin Codeigniter</h1>
+      <h1 class="header center orange-text">Scott is Bad</h1>
       <div class="row center">
         <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
       </div>
@@ -133,13 +133,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="../assets/js/materialize.js"></script>
   <script>
-	(function($){
-	  $(function(){
+    (function($){
+      $(function(){
 
-	    $('.button-collapse').sideNav();
+        $('.button-collapse').sideNav();
 
-	  }); // end of document ready
-	})(jQuery); // end of jQuery name space
+      }); // end of document ready
+    })(jQuery); // end of jQuery name space
   </script>
 
   </body>

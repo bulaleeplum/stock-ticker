@@ -10,3 +10,4 @@ Changes to the lab will be detailed in this log file.
 
 #### Feb 15 2016
 - added materialize bootstrap and css framework
+- added a basic page for stock history

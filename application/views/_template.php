@@ -49,10 +49,11 @@ if (!defined('APPPATH'))
                 <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
              </div>
           </nav>
+
           <div class="section no-pad-bot" id="index-banner">
             <div class="container">
               <br><br>
-              <h1 class="header center teal-text">{title}</h1>
+              <h1 class="header center teal-text">{pagetitle}</h1>
               <div class="row center">
                 <div id="content">
                     {content}

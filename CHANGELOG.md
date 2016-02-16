@@ -11,3 +11,7 @@ Changes to the lab will be detailed in this log file.
 #### Feb 15 2016
 - added materialize bootstrap and css framework
 - added a basic page for stock history
+
+#### Feb 16 2016
+- added a basic page for player portfolio
+- added SQL dump of database in root directory

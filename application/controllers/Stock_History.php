@@ -13,6 +13,7 @@ class Stock_History extends MY_Controller {
     }
 
     function index() {
+        $this->data['pagetitle'] = 'Stock History';
         $this->data['pagebody'] = 'stock_history';
         $this->render();
     }

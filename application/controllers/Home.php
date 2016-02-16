@@ -24,6 +24,7 @@ class Home extends MY_Controller {
     }
 
     function index() {
+        $this->data['pagetitle'] = 'Home';
 		$this->data['pagebody'] = 'home';
     	$this->render();
     }

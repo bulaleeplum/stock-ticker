@@ -14,7 +14,7 @@ class MY_Controller extends CI_Controller {
 	protected $data = array();	  // parameters for view components
 	protected $id;				  // identifier for our content
 	protected $choices = array(
-		'Home' => '/', 'Stock History' => '/stock-history', 'Player Profile' => '/player-profile'
+		'Home' => '/', 'Stock History' => '/stock-history', 'Player Portfolio' => '/player-portfolio'
 	);
 
 	/**

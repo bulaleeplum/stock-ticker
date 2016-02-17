@@ -1,3 +1,4 @@
+{players}
 <div class="input-field col s12">
     <select>
         <option value="" disabled selected></option>

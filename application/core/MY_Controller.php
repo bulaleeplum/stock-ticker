@@ -24,6 +24,9 @@ class MY_Controller extends CI_Controller {
 	function __construct()
 	{
         parent::__construct();
+        $this->load->database();
+        $this->load->library('table');
+        $this->load->library('parser');
         $this->data = array();
         $this->data['title'] = 'Stock Ticker'; 		// default title
         $this->data['pagetitle'] = 'Stock Ticker'; 	// default page

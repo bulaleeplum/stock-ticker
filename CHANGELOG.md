@@ -15,3 +15,4 @@ Changes to the lab will be detailed in this log file.
 #### Feb 16 2016
 - added a basic page for player portfolio
 - added SQL dump of database in root directory
+- added basic db queries in StocksModel

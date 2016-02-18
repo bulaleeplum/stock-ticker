@@ -15,4 +15,5 @@
     <h4>Current Holdings</h4>
 </section>
 -->
-{selectedPortfolio}
+<h5>{playerName}</h5>
+{table}

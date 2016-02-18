@@ -39,9 +39,16 @@ class Player_Portfolio extends MY_Controller {
      * Load the portfolio for the option selected in the player dropdown.
      */
     function loadPlayerPortfolio() {
+        $this->table->set_heading('Cash', 'Date', 'Stock', 'Transaction', 'Quantity');
         $selectedPortfolio = $this->input->post('portfolio-select');
-        if ($selectedPortfolio) {
-            $this->data['selectedPortfolio'] = $selectedPortfolio;
+        $this->data['playerName'] = $selectedPortfolio;
+
+        if (!empty($selectedPortfolio)) {
+            $portfolio = $this->StocksModel->getPlayerPortfolio($selectedPortfolio);
+            foreach ($portfolio as $row) {
+                $this->table->add_row($row);
+            }
         }
+        $this->data['table'] = $this->table->generate();
     }
 }

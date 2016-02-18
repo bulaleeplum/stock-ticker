@@ -72,6 +72,18 @@ class StocksModel extends CI_Model {
         return $query->result_array();
     }
 
+    function getMostRecentStock() {
+        $this->db->select('code');
+        $this->db->from('movements');
+        $this->db->where('datetime = (SELECT MAX(datetime) FROM movements)',
+            NULL, FALSE);
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+
     /**
      * Gets the stocks table.
      */

@@ -1,19 +1,15 @@
-<div class="input-field col s12">
-    <select>
-        <option value="" disabled selected>Choose your option</option>
-        <option value="1">Option 1</option>
-        <option value="2">Option 2</option>
-        <option value="3">Option 3</option>
-    </select>
-    <label>Stock Options</label>
+<div class="input-field col s3">
+    <form method="post">
+        <select name="stock_select" onchange="this.form.submit()">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="BOND">BOND</option>
+            <option value="GOLD">GOLD</option>
+            <option value="GRAN">GRAN</option>
+            <option value="IND">IND</option>
+            <option value="OIL">OIL</option>
+            <option value="TECH">TECH</option>
+        </select>
+    </form>
+    <label class="active">Stock Options</label>
 </div>
-<table class="highlight">
-    <tr>
-        <th>Stock movement</th>
-        <th>Buy/Sell</th>
-    </tr>
-    <tr>
-        <td>Dummy data1</td>
-        <td>Dummy data2</td>
-    </tr>
-</table>
+{table}

@@ -12,29 +12,12 @@ if (!defined('APPPATH'))
       <!-- CSS  -->
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link href="../assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-      <style type="text/css">
-        body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-        }
-
-        main {
-            flex: 1 0 auto;
-        }
-
-        .icon-block {
-            padding: 0 15px;
-        }
-
-        .icon-block .material-icons {
-            font-size: inherit;
-        }
-      </style>
+      <link href="../assets/css/style.css" type="text/css" rel="stylesheet"/>
    </head>
 
    <body>
       <main>
+          <!-- Navigation  -->
           <nav class="light-blue lighten-1" role="navigation">
              <div class="nav-wrapper container">
                 <a id="logo-container" href="/" class="brand-logo">Stock Ticker</a>
@@ -50,6 +33,7 @@ if (!defined('APPPATH'))
              </div>
           </nav>
 
+          <!-- Page Content  -->
           <div class="section no-pad-bot" id="index-banner">
             <div class="container">
               <br><br>
@@ -64,6 +48,7 @@ if (!defined('APPPATH'))
           </div>
       </main>
 
+      <!-- Footer  -->
       <footer class="page-footer light-blue lighten-1">
         <div class="footer-copyright">
           <div class="container">
@@ -75,18 +60,7 @@ if (!defined('APPPATH'))
       <!--  Scripts-->
       <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script src="../assets/js/materialize.js"></script>
-      <script>
-        // needs this for <select> tags to function properly
-        $(document).ready(function() {
-            $('select').material_select();
-        });
-        // for mobile navigation menum
-        (function($){
-            $(function(){
-                $('.button-collapse').sideNav();
-            }); // end of document ready
-        })(jQuery); // end of jQuery name space
-      </script>
+      <script src="../assets/js/functions.js"></script>
    </body>
 </html>
 

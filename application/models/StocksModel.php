@@ -24,6 +24,24 @@ class StocksModel extends CI_Model {
     }
 
     /**
+     * Retrieves the recent trading activity and current holdings of a given
+     * player.
+     * @param $playerName the name of the player to retrieve from the database
+     * @return mixed the array of results from the query
+     */
+    function getPlayerPortfolio($playerName) {
+        $this->db->select('players.Cash,
+                            transactions.DateTime, transactions.Stock,
+                            transactions.Trans, transactions.Quantity');
+        $this->db->from('players');
+        $this->db->join('transactions', 'players.Player = transactions.Player');
+        $this->db->where('players.player = ', $playerName);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    /**
      * Retrieve the stock history of a given stock
      * @param $stockCode The code name for the stock to retrieve from the
      * database

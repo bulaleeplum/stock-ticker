@@ -19,6 +19,7 @@ class Player_Portfolio extends MY_Controller {
         $this->data['pagetitle'] = 'Player Portfolio';
         $this->data['pagebody'] = 'player_portfolio';
         $this->loadPlayerNamesToOptions();
+        $this->loadPlayerPortfolio();
         $this->render();
     }
 
@@ -32,5 +33,22 @@ class Player_Portfolio extends MY_Controller {
             $options .= "<option value=" . $row['Player'] . ">" . $row['Player'] . "</option>";
         }
         $this->data['options'] = $options;
+    }
+
+    /**
+     * Load the portfolio for the option selected in the player dropdown.
+     */
+    function loadPlayerPortfolio() {
+        $this->table->set_heading('Cash', 'Date', 'Stock', 'Transaction', 'Quantity');
+        $selectedPortfolio = $this->input->post('portfolio-select');
+        $this->data['playerName'] = $selectedPortfolio;
+
+        if (!empty($selectedPortfolio)) {
+            $portfolio = $this->StocksModel->getPlayerPortfolio($selectedPortfolio);
+            foreach ($portfolio as $row) {
+                $this->table->add_row($row);
+            }
+        }
+        $this->data['table'] = $this->table->generate();
     }
 }

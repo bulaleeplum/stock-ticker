@@ -19,3 +19,10 @@ Changes to the lab will be detailed in this log file.
 - updated config to autoload StocksModel
 - player names loaded into Player Portfolio dropdown
 - commented Player Portfolio controller
+
+#### Feb 17 2016
+- Added stock history query
+- Completed table generation
+
+#### Feb 18 2016
+- Added default stock query 

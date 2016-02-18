@@ -7,13 +7,14 @@
      */
 
 class Stock_History extends MY_Controller {
+
     function __construct()
     {
         parent::__construct();
     }
 
-    /*
-     * Display screen contents
+    /**
+     * Generates the stock history page values and passes them to the view
      */
     function index() {
         $this->load->model('StocksModel');
@@ -23,16 +24,32 @@ class Stock_History extends MY_Controller {
         $this->data['pagebody'] = 'stock_history';
         $value = $this->input->post('stock_select');
 
+        $table = NULL;
+        if(!empty($value)) {
+            $stockHistory = $this->StocksModel->getStockHistory($value);
+            $table = $this->generateTable($stockHistory);
+        } else {
+            $mostRecent = $this->StocksModel->getMostRecentStock();
+            $stockHistory = $this->StocksModel->getStockHistory($mostRecent[0]['code']);
+            $table = $this->generateTable($stockHistory);
+        }
+
+        $this->data['table'] = $table;
+        $this->render();
+    }
+
+    /**
+     * Generates the stock history table with a given stock
+     * @param $stock The stock to generate the table with
+     * @return mixed The generated table
+     */
+    function generateTable($stock) {
         $this->table->set_heading('Code', 'Date', 'Stock Movement',
             'Quantity', 'Transaction');
-
-        if(!empty($value)) {
-            $action = $this->StocksModel->getStockHistory($value);
-            foreach ($action as $row) {
-                $this->table->add_row($row);
-            }
+        foreach ($stock as $row) {
+            $this->table->add_row($row);
         }
-        $this->data['table'] = $this->table->generate();
-        $this->render();
+
+        return $this->table->generate();
     }
 }

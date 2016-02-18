@@ -1,10 +1,7 @@
-{players}
 <div class="input-field col s12">
     <select>
         <option value="" disabled selected></option>
-        <option value="1">Krystle Bulalakaw</option>
-        <option value="2">Spenser Lee</option>
-        <option value="3">Scott Plummer</option>
+        {options}
     </select>
     <label>View portfolio</label>
 </div>

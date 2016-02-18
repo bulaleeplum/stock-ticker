@@ -19,6 +19,7 @@ class Player_Portfolio extends MY_Controller {
         $this->data['pagetitle'] = 'Player Portfolio';
         $this->data['pagebody'] = 'player_portfolio';
         $this->loadPlayerNamesToOptions();
+        $this->loadPlayerPortfolio();
         $this->render();
     }
 
@@ -32,5 +33,15 @@ class Player_Portfolio extends MY_Controller {
             $options .= "<option value=" . $row['Player'] . ">" . $row['Player'] . "</option>";
         }
         $this->data['options'] = $options;
+    }
+
+    /**
+     * Load the portfolio for the option selected in the player dropdown.
+     */
+    function loadPlayerPortfolio() {
+        $selectedPortfolio = $this->input->post('portfolio-select');
+        if ($selectedPortfolio) {
+            $this->data['selectedPortfolio'] = $selectedPortfolio;
+        }
     }
 }

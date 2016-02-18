@@ -16,3 +16,6 @@ Changes to the lab will be detailed in this log file.
 - added a basic page for player portfolio
 - added SQL dump of database in root directory
 - added basic db queries in StocksModel
+- updated config to autoload StocksModel
+- player names loaded into Player Portfolio dropdown
+- commented Player Portfolio controller

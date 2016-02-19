@@ -21,17 +21,15 @@ class Player_Portfolio extends MY_Controller {
         $this->loadPlayerNamesToOptions();
         $this->loadCurrentHoldings();
         $this->loadTradingActivity();
-        $this->loadEquity();
-        $this->loadNetWorth();
         $this->render();
     }
 
     /**
-     * Query the StocksModel Players table. Set each player row as a dropdown option.
+     * Query the PortfolioModel Players table. Set each player row as a dropdown option.
      */
     function loadPlayerNamesToOptions() {
         $options = "";
-        $players = $this->StocksModel->getPlayers();
+        $players = $this->PortfolioModel->getPlayers();
         foreach ($players as $row) {
             $options .= "<option value=" . $row['Player'] . ">" . $row['Player'] . "</option>";
         }
@@ -47,7 +45,7 @@ class Player_Portfolio extends MY_Controller {
         $this->data['playerName'] = $selectedPortfolio;
 
         if (!empty($selectedPortfolio)) {
-            $portfolio = $this->StocksModel->getCurrentHoldings
+            $portfolio = $this->PortfolioModel->getCurrentHoldings
             ($selectedPortfolio);
             foreach ($portfolio as $row) {
                 $this->table->add_row($row);
@@ -65,41 +63,11 @@ class Player_Portfolio extends MY_Controller {
         $this->data['playerName'] = $selectedPortfolio;
 
         if (!empty($selectedPortfolio)) {
-            $portfolio = $this->StocksModel->getTradingActivity($selectedPortfolio);
+            $portfolio = $this->PortfolioModel->getTradingActivity($selectedPortfolio);
             foreach ($portfolio as $row) {
                 $this->table->add_row($row);
             }
         }
         $this->data['trading_activity'] = $this->table->generate();
-    }
-
-    /**
-     * Load the equity for the porfolio selected.
-     */
-    function loadEquity() {
-        $selectedPortfolio = $this->input->post('portfolio-select');
-        $result = 0;
-
-        if (!empty($selectedPortfolio)) {
-            $equity = $this->StocksModel->getPlayerEquity($selectedPortfolio);
-            $result = $equity[0]['equity'];
-        }
-
-         $this->data['equity'] = $result;
-    }
-
-    /**
-     * Load the net worth for the portfolio selected.
-     */
-    function loadNetWorth() {
-        $selectedPortfolio = $this->input->post('portfolio-select');
-        $result = 0;
-
-        if (!empty($selectedPortfolio)) {
-            $netWorth = $this->StocksModel->getPlayerNetWorth($selectedPortfolio);
-            $result = $netWorth[0]['netWorth'];
-        }
-
-        $this->data['netWorth'] = $result;
     }
 }

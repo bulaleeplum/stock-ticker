@@ -18,7 +18,5 @@
 <h5>{playerName}</h5>
 {trading_activity}
 {holdings}
-equity: {equity}
-net worth: {netWorth}
 </body>
 </html>

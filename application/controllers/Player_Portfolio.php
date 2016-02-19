@@ -87,7 +87,7 @@ class Player_Portfolio extends MY_Controller {
      */
     function loadNetWorth() {
        $selectedPortfolio = $this->input->post('portfolio-select');
-       $equity = $this->StocksModel->getPlayerNetWorth($selectedPortfolio);
-       $this->data['netWorth'] = $equity[0]['netWorth'];
+       $netWorth = $this->StocksModel->getPlayerNetWorth($selectedPortfolio);
+       $this->data['netWorth'] = $netWorth[0]['netWorth'];
     }
 }

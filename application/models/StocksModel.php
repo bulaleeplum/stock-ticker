@@ -24,18 +24,30 @@ class StocksModel extends CI_Model {
     }
 
     /**
-     * Retrieves the recent trading activity and current holdings of a given
+     * Retrieves the recent trading activity of a given
      * player.
      * @param $playerName the name of the player to retrieve from the database
      * @return mixed the array of results from the query
      */
-    function getPlayerPortfolio($playerName) {
-        $this->db->select('players.Cash,
-                            transactions.DateTime, transactions.Stock,
-                            transactions.Trans, transactions.Quantity');
-        $this->db->from('players');
-        $this->db->join('transactions', 'players.Player = transactions.Player');
-        $this->db->where('players.player = ', $playerName);
+    function getTradingActivity($playerName) {
+        $this->db->select('Stock, Trans, DateTime');
+        $this->db->from('transactions');
+        $this->db->where('player = ', $playerName);
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
+
+    /**
+     * Retrieves the recent trading activity of a given
+     * player.
+     * @param $playerName the name of the player to retrieve from the database
+     * @return mixed the array of results from the query
+     */
+    function getCurrentHoldings($playerName) {
+        $this->db->select('Stock, Quantity, DateTime');
+        $this->db->from('transactions');
+        $this->db->where('player = ', $playerName);
         $query = $this->db->get();
 
         return $query->result_array();
@@ -72,6 +84,10 @@ class StocksModel extends CI_Model {
         return $query->result_array();
     }
 
+    /**
+     * Retrieves the most recently traded stock code
+     * @return mixed The most recently traded stock code
+     */
     function getMostRecentStock() {
         $this->db->select('code');
         $this->db->from('movements');

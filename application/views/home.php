@@ -77,5 +77,3 @@
         </div>
     </div>
 </div>
-
-<p>BASE CONTROLLER ✓ MASTER TEMPLATE ✓ IDK HOW IT WORKED ✓ MUST BE PHP ✓ SeemsGood</p>

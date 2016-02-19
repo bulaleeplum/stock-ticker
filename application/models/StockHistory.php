@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * Model to get data from the stockticker database.
  */
-class StocksModel extends CI_Model {
+class StockHistory extends CI_Model {
     /**
      * Constructor.
      */

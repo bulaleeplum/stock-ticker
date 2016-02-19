@@ -21,6 +21,8 @@ class Player_Portfolio extends MY_Controller {
         $this->loadPlayerNamesToOptions();
         $this->loadCurrentHoldings();
         $this->loadTradingActivity();
+        $this->loadEquity();
+        $this->loadNetWorth();
         $this->render();
     }
 
@@ -37,7 +39,7 @@ class Player_Portfolio extends MY_Controller {
     }
 
     /**
-     * Load the portfolio for the option selected in the player dropdown.
+     * Load the current holdings table for the portfolio selected
      */
     function loadCurrentHoldings() {
         $this->table->set_heading('Stock Code','Cash', 'Date');
@@ -54,6 +56,9 @@ class Player_Portfolio extends MY_Controller {
         $this->data['holdings'] = $this->table->generate();
     }
 
+    /**
+     * Load the trading activity table for the portfolio selected.
+     */
     function loadTradingActivity() {
         $this->table->set_heading('Stock Code', 'Transaction', 'Date');
         $selectedPortfolio = $this->input->post('portfolio-select');
@@ -66,5 +71,23 @@ class Player_Portfolio extends MY_Controller {
             }
         }
         $this->data['trading_activity'] = $this->table->generate();
+    }
+
+    /**
+     * Load the equity for the porfolio selected.
+     */
+    function loadEquity() {
+       $selectedPortfolio = $this->input->post('portfolio-select');
+       $equity = $this->StocksModel->getPlayerEquity($selectedPortfolio);
+       $this->data['equity'] = $equity[0]['equity'];
+    }
+
+    /**
+     * Load the net worth for the portfolio selected.
+     */
+    function loadNetWorth() {
+       $selectedPortfolio = $this->input->post('portfolio-select');
+       $netWorth = $this->StocksModel->getPlayerNetWorth($selectedPortfolio);
+       $this->data['netWorth'] = $netWorth[0]['netWorth'];
     }
 }

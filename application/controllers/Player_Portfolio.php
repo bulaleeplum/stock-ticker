@@ -19,7 +19,8 @@ class Player_Portfolio extends MY_Controller {
         $this->data['pagetitle'] = 'Player Portfolio';
         $this->data['pagebody'] = 'player_portfolio';
         $this->loadPlayerNamesToOptions();
-        $this->loadPlayerPortfolio();
+        $this->loadCurrentHoldings();
+        $this->loadTradingActivity();
         $this->render();
     }
 
@@ -38,17 +39,32 @@ class Player_Portfolio extends MY_Controller {
     /**
      * Load the portfolio for the option selected in the player dropdown.
      */
-    function loadPlayerPortfolio() {
-        $this->table->set_heading('Cash', 'Date', 'Stock', 'Transaction', 'Quantity');
+    function loadCurrentHoldings() {
+        $this->table->set_heading('Stock Code','Cash', 'Date');
         $selectedPortfolio = $this->input->post('portfolio-select');
         $this->data['playerName'] = $selectedPortfolio;
 
         if (!empty($selectedPortfolio)) {
-            $portfolio = $this->StocksModel->getPlayerPortfolio($selectedPortfolio);
+            $portfolio = $this->StocksModel->getCurrentHoldings
+            ($selectedPortfolio);
             foreach ($portfolio as $row) {
                 $this->table->add_row($row);
             }
         }
-        $this->data['table'] = $this->table->generate();
+        $this->data['holdings'] = $this->table->generate();
+    }
+
+    function loadTradingActivity() {
+        $this->table->set_heading('Stock Code', 'Transaction', 'Date');
+        $selectedPortfolio = $this->input->post('portfolio-select');
+        $this->data['playerName'] = $selectedPortfolio;
+
+        if (!empty($selectedPortfolio)) {
+            $portfolio = $this->StocksModel->getTradingActivity($selectedPortfolio);
+            foreach ($portfolio as $row) {
+                $this->table->add_row($row);
+            }
+        }
+        $this->data['trading_activity'] = $this->table->generate();
     }
 }

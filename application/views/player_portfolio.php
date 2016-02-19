@@ -16,4 +16,5 @@
 </section>
 -->
 <h5>{playerName}</h5>
-{table}
+{trading_activity}
+{holdings}

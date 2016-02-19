@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'home';
 $route['stock-history'] = 'Stock_History/index';
+    $route['stock-history/([a-zA-Z]{3,4})'] = 'Stock_History/displayStock/$1';
 $route['player-portfolio'] = 'Player_Portfolio';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

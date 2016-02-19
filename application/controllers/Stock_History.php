@@ -17,25 +17,31 @@ class Stock_History extends MY_Controller {
      * Generates the stock history page values and passes them to the view
      */
     function index() {
-        $this->load->model('StocksModel');
         $this->load->library('table');
 
         $this->data['pagetitle'] = 'Stock History';
         $this->data['pagebody'] = 'stock_history';
-        $value = $this->input->post('stock_select');
+        $mostRecent = $this->StocksModel->getMostRecentStock();
+        $stockHistory = $this->StocksModel->getStockHistory($mostRecent[0]['code']);
+        $this->data['table'] = $this->generateTable($stockHistory);
 
-        $table = NULL;
-        if(!empty($value)) {
-            $stockHistory = $this->StocksModel->getStockHistory($value);
-            $table = $this->generateTable($stockHistory);
-        } else {
-            $mostRecent = $this->StocksModel->getMostRecentStock();
-            $stockHistory = $this->StocksModel->getStockHistory($mostRecent[0]['code']);
-            $table = $this->generateTable($stockHistory);
-        }
-
-        $this->data['table'] = $table;
         $this->render();
+    }
+
+    function displayStock($stock) {
+        $this->load->library('table');
+        $this->data['pagetitle'] = 'Stock History';
+        $this->data['pagebody'] = 'stock_history';
+        $stockHistory = $this->StocksModel->getStockHistory($stock);
+        $this->data['table'] = $this->generateTable($stockHistory);
+
+        $this->render();
+    }
+
+    function getSpecificStock() {
+        $stock = $this->input->get('stock_select');
+        redirect("stock-history/$stock");
+
     }
 
     /**

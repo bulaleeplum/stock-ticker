@@ -32,3 +32,5 @@ Changes to the lab will be detailed in this log file.
 #### Feb 19 2015
 - Added Collections table to stockerticker database
 - Added equity and net worth queries for a player
+- Implemented routing on stock-history page
+- Refactored models

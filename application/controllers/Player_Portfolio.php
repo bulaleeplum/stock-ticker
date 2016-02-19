@@ -77,17 +77,29 @@ class Player_Portfolio extends MY_Controller {
      * Load the equity for the porfolio selected.
      */
     function loadEquity() {
-       $selectedPortfolio = $this->input->post('portfolio-select');
-       $equity = $this->StocksModel->getPlayerEquity($selectedPortfolio);
-       $this->data['equity'] = $equity[0]['equity'];
+        $selectedPortfolio = $this->input->post('portfolio-select');
+        $result = 0;
+
+        if (!empty($selectedPortfolio)) {
+            $equity = $this->StocksModel->getPlayerEquity($selectedPortfolio);
+            $result = $equity[0]['equity'];
+        }
+
+         $this->data['equity'] = $result;
     }
 
     /**
      * Load the net worth for the portfolio selected.
      */
     function loadNetWorth() {
-       $selectedPortfolio = $this->input->post('portfolio-select');
-       $netWorth = $this->StocksModel->getPlayerNetWorth($selectedPortfolio);
-       $this->data['netWorth'] = $netWorth[0]['netWorth'];
+        $selectedPortfolio = $this->input->post('portfolio-select');
+        $result = 0;
+
+        if (!empty($selectedPortfolio)) {
+            $netWorth = $this->StocksModel->getPlayerNetWorth($selectedPortfolio);
+            $result = $netWorth[0]['netWorth'];
+        }
+
+        $this->data['netWorth'] = $result;
     }
 }

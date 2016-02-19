@@ -25,4 +25,10 @@ Changes to the lab will be detailed in this log file.
 - Completed table generation
 
 #### Feb 18 2016
-- Added default stock query 
+- Added default stock display
+- Added player portfolio query
+- Separated player portfolio table into Trading Activity and Current Holdings
+
+#### Feb 19 2015
+- Added Collections table to stockerticker database
+- Added equity and net worth queries for a player

@@ -25,11 +25,11 @@ class Player_Portfolio extends MY_Controller {
     }
 
     /**
-     * Query the StocksModel Players table. Set each player row as a dropdown option.
+     * Query the PortfolioModel Players table. Set each player row as a dropdown option.
      */
     function loadPlayerNamesToOptions() {
         $options = "";
-        $players = $this->StocksModel->getPlayers();
+        $players = $this->PortfolioModel->getPlayers();
         foreach ($players as $row) {
             $options .= "<option value=" . $row['Player'] . ">" . $row['Player'] . "</option>";
         }
@@ -37,7 +37,7 @@ class Player_Portfolio extends MY_Controller {
     }
 
     /**
-     * Load the portfolio for the option selected in the player dropdown.
+     * Load the current holdings table for the portfolio selected
      */
     function loadCurrentHoldings() {
         $this->table->set_heading('Stock Code','Cash', 'Date');
@@ -45,7 +45,7 @@ class Player_Portfolio extends MY_Controller {
         $this->data['playerName'] = $selectedPortfolio;
 
         if (!empty($selectedPortfolio)) {
-            $portfolio = $this->StocksModel->getCurrentHoldings
+            $portfolio = $this->PortfolioModel->getCurrentHoldings
             ($selectedPortfolio);
             foreach ($portfolio as $row) {
                 $this->table->add_row($row);
@@ -54,13 +54,16 @@ class Player_Portfolio extends MY_Controller {
         $this->data['holdings'] = $this->table->generate();
     }
 
+    /**
+     * Load the trading activity table for the portfolio selected.
+     */
     function loadTradingActivity() {
         $this->table->set_heading('Stock Code', 'Transaction', 'Date');
         $selectedPortfolio = $this->input->post('portfolio-select');
         $this->data['playerName'] = $selectedPortfolio;
 
         if (!empty($selectedPortfolio)) {
-            $portfolio = $this->StocksModel->getTradingActivity($selectedPortfolio);
+            $portfolio = $this->PortfolioModel->getTradingActivity($selectedPortfolio);
             foreach ($portfolio as $row) {
                 $this->table->add_row($row);
             }

@@ -18,3 +18,5 @@
 <h5>{playerName}</h5>
 {trading_activity}
 {holdings}
+</body>
+</html>

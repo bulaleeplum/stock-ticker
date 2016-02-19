@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Feb 03, 2016 at 06:51 PM
--- Server version: 5.6.26
--- PHP Version: 5.6.12
+-- Generation Time: Feb 19, 2016 at 10:52 PM
+-- Server version: 10.1.9-MariaDB
+-- PHP Version: 7.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,8 +17,50 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `stockticker`
+-- Database: `comp4711`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Collections`
+--
+
+CREATE TABLE `Collections` (
+  `Player` varchar(6) NOT NULL,
+  `StockAmount` int(6) NOT NULL,
+  `Code` varchar(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Collections`
+--
+
+INSERT INTO `Collections` (`Player`, `StockAmount`, `Code`) VALUES
+('Mickey', 100, 'BOND'),
+('Mickey', 10, 'GOLD'),
+('Mickey', 50, 'GRAN'),
+('Mickey', 0, 'IND'),
+('Mickey', 5, 'OIL'),
+('Mickey', 170, 'TECH'),
+('Henry', 25, 'BOND'),
+('Henry', 500, 'GOLD'),
+('Henry', 0, 'GRAN'),
+('Henry', 1000, 'IND'),
+('Henry', 0, 'OIL'),
+('Henry', 170, 'TECH'),
+('George', 0, 'BOND'),
+('George', 0, 'GOLD'),
+('George', 0, 'GRAN'),
+('George', 1000, 'IND'),
+('George', 20, 'OIL'),
+('George', 10, 'TECH'),
+('Donald', 10, 'BOND'),
+('Donald', 10, 'GOLD'),
+('Donald', 30, 'GRAN'),
+('Donald', 5, 'IND'),
+('Donald', 20, 'OIL'),
+('Donald', 50, 'TECH');
 
 -- --------------------------------------------------------
 
@@ -26,8 +68,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `movements`
 --
 
-DROP TABLE IF EXISTS `movements`;
-CREATE TABLE IF NOT EXISTS `movements` (
+CREATE TABLE `movements` (
   `Datetime` varchar(19) DEFAULT NULL,
   `Code` varchar(4) DEFAULT NULL,
   `Action` varchar(4) DEFAULT NULL,
@@ -75,8 +116,7 @@ INSERT INTO `movements` (`Datetime`, `Code`, `Action`, `Amount`) VALUES
 -- Table structure for table `players`
 --
 
-DROP TABLE IF EXISTS `players`;
-CREATE TABLE IF NOT EXISTS `players` (
+CREATE TABLE `players` (
   `Player` varchar(6) DEFAULT NULL,
   `Cash` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -97,8 +137,7 @@ INSERT INTO `players` (`Player`, `Cash`) VALUES
 -- Table structure for table `stocks`
 --
 
-DROP TABLE IF EXISTS `stocks`;
-CREATE TABLE IF NOT EXISTS `stocks` (
+CREATE TABLE `stocks` (
   `Code` varchar(4) DEFAULT NULL,
   `Name` varchar(10) DEFAULT NULL,
   `Category` varchar(1) DEFAULT NULL,
@@ -123,8 +162,7 @@ INSERT INTO `stocks` (`Code`, `Name`, `Category`, `Value`) VALUES
 -- Table structure for table `transactions`
 --
 
-DROP TABLE IF EXISTS `transactions`;
-CREATE TABLE IF NOT EXISTS `transactions` (
+CREATE TABLE `transactions` (
   `DateTime` varchar(19) DEFAULT NULL,
   `Player` varchar(6) DEFAULT NULL,
   `Stock` varchar(4) DEFAULT NULL,

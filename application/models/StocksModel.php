@@ -13,47 +13,6 @@ class StocksModel extends CI_Model {
     }
 
     /**
-     * Gets the player table.
-     */
-    function getPlayers() {
-        $this->db->select('*');
-        $this->db->from('players');
-        $query=$this->db->get();
-
-        return $query->result_array();
-    }
-
-    /**
-     * Retrieves the recent trading activity of a given
-     * player.
-     * @param $playerName the name of the player to retrieve from the database
-     * @return mixed the array of results from the query
-     */
-    function getTradingActivity($playerName) {
-        $this->db->select('Stock, Trans, DateTime');
-        $this->db->from('transactions');
-        $this->db->where('player = ', $playerName);
-        $query = $this->db->get();
-
-        return $query->result_array();
-    }
-
-    /**
-     * Retrieves the recent trading activity of a given
-     * player.
-     * @param $playerName the name of the player to retrieve from the database
-     * @return mixed the array of results from the query
-     */
-    function getCurrentHoldings($playerName) {
-        $this->db->select('Stock, Quantity, DateTime');
-        $this->db->from('transactions');
-        $this->db->where('player = ', $playerName);
-        $query = $this->db->get();
-
-        return $query->result_array();
-    }
-
-    /**
      * Retrieve the stock history of a given stock
      * @param $stockCode The code name for the stock to retrieve from the
      * database
@@ -98,7 +57,6 @@ class StocksModel extends CI_Model {
 
         return $query->result_array();
     }
-
 
     /**
      * Gets the stocks table.

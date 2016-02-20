@@ -1,5 +1,5 @@
 # Change Log
-Changes to the lab will be detailed in this log file.
+Changes to the project will be detailed in this log file.
 
 #### Feb 07 2016
 - project started
@@ -40,3 +40,4 @@ Changes to the lab will be detailed in this log file.
 - Fixed dropdown generation
 - Implemented initial homepage view with equity
 - Implemented user login
+- Cleanup of old files/debug statements

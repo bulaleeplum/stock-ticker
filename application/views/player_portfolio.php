@@ -12,6 +12,8 @@
         <label class="active">View portfolio</label>
     </div>
     {message}
+    <h4 class="header center thin">Trading Activity</h4>
     {trading_activity}
+    <h4 class="header center thin">Current Holdings</h4>
     {holdings}
 </div>

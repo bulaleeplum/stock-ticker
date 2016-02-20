@@ -11,10 +11,6 @@ class Home extends MY_Controller {
         $this->data['pagetitle'] = 'Home';
 		$this->data['pagebody'] = 'home';
 
-        $this->load->model("HomeModel");
-        $this->load->model("StockHistory");
-        $this->load->model("PortfolioModel");
-
         $stocks = $this->StockHistory->getStocks();
         $players = $this->PortfolioModel->getPlayers();
 

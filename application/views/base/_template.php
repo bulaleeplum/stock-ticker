@@ -13,28 +13,18 @@ if (!defined('APPPATH'))
         <link href="../assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
         <link href="../assets/css/style.css" type="text/css" rel="stylesheet"/>
     </head>
-    <body>
+    <body class="blue-grey darken-3">
         <main>
             <header>
                 {header}
             </header>
 
-
             <!-- Page Content  -->
-            <div class="section no-pad-bot" id="index-banner">
-                <div class="container">
-                    <div class="row ">
-                        <div id="content">
-                            {content}
-                        </div>
-                    </div>
-                    <br><br>
-                </div>
-            </div>
+            {content}
         </main>
 
         <!-- Footer  -->
-        <footer class="page-footer light-blue lighten-1">
+        <footer class="page-footer cyan darken-2">
             {footer}
         </footer>
         <!--  Scripts-->

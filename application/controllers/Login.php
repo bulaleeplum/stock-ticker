@@ -11,14 +11,23 @@ class Login extends MY_Controller {
      *
      */
     function index() {
+        $this->load->model("PortfolioModel");
+        $player = $_POST['playername'];
 
-        $user = $_POST['username'];
-        // use portfolio model to get player list
+        $this->load->model("PortfolioModel");
+        $playerList = $this->PortfolioModel->getPlayers();
 
-        // loop through player list
-        // if the player in the list of players is the same as the one in POST
-        // set the session user data username to the one in POST
+        $playerResults = array();
+        foreach ($playerList as $p) {
+            $playerResults[] = $p;
+        }
 
-        // redirect to specific portfolio
+        foreach ($playerResults as $p) {
+            if ($p["Player"] == $_POST['playername']) {
+                $this->session->set_userdata('playername', $_POST['playername']);
+            }
+        }
+
+        redirect("/player-portfolio/$player");
     }
 }

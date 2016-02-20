@@ -80,7 +80,6 @@ class Stock_History extends MY_Controller {
         $options = "";
         $stocks = $this->StockHistory->getStocks();
         foreach ($stocks as $row) {
-            echo $row['code'];
             $options .= "<option value=" . $row['code'] . ">" . $row['name'] .
                 "</option>";
         }

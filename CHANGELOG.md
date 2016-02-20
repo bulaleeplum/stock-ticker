@@ -37,3 +37,5 @@ Changes to the lab will be detailed in this log file.
 - Implemented routing on player-portfolio page
 - Set temporary default player-portfolio view to be blank
 - Implemented stock dropdown generation
+- Fixed dropdown generation
+- Implemented initial homepage view with equity

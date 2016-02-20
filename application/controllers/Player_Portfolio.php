@@ -38,11 +38,18 @@ class Player_Portfolio extends MY_Controller {
         $this->data['options'] = $options;
     }
 
+    /**
+     * Routing function for the specific player
+     */
     function getSpecificPortfolio() {
         $player = $this->input->get('portfolio-select');
         redirect("player-portfolio/$player");
     }
 
+    /**
+     * Displays a given portfolio with tables of trading activity and current holdings
+     * @param $player the portfolio player
+     */
     function displayPortfolio($player) {
         $this->data['pagetitle'] = $player;
         $this->data['pagebody'] = 'player_portfolio';
@@ -57,6 +64,11 @@ class Player_Portfolio extends MY_Controller {
         $this->render();
     }
 
+    /**
+     * Generates the trading activity table with a given player
+     * @param $player the portfolio player
+     * @return mixed The generated table
+     */
     function generateTradingActivityTable($player) {
         $this->table->set_heading('Stock Code', 'Transaction', 'Date');
         foreach ($player as $row) {
@@ -66,6 +78,11 @@ class Player_Portfolio extends MY_Controller {
         return $this->table->generate();
     }
 
+    /**
+     * Generates the current holdings table with a given player
+     * @param $player the portfolio player
+     * @return mixed The generated table
+     */
     function generateCurrentHoldingsTable($player) {
         $this->table->set_heading('Stock Code','Cash', 'Date');
         foreach ($player as $row) {

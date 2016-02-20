@@ -25,9 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | RESERVED ROUTES
 | -------------------------------------------------------------------------
 |
-]'\l.9hyj7u6gtw<    A
-PKS| There are three reserved routes:
-
+| There are three reserved routes:
 |
 |	$route['default_controller'] = 'welcome';
 |

@@ -41,3 +41,4 @@ Changes to the project will be detailed in this log file.
 - Implemented initial homepage view with equity
 - Implemented user login
 - Cleanup of old files/debug statements
+- Hide portfolios and display message to user if not logged in

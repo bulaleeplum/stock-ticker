@@ -7,6 +7,7 @@
     </form>
     <label class="active">View portfolio</label>
 </div>
+{message}
 {trading_activity}
 {holdings}
 </body>

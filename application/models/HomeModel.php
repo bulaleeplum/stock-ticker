@@ -12,7 +12,7 @@ class HomeModel extends CI_Model {
         parent::__construct();
     }
 
-      /**
+    /**
      * Calculates the equity given a player name.
      * A player's equity is the quantity of each stock the hold * the current
      * price of that stock.
@@ -33,7 +33,7 @@ class HomeModel extends CI_Model {
         return $query->result_array();
     }
 
-        /**
+    /**
      * Calculates the net worth given a player name.
      * A player's net worth is their net worth + cash.
      * @param $playerName the name of the player to retrieve from the database

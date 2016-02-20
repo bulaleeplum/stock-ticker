@@ -18,8 +18,6 @@
 </div>
 
 <div class="row">
-    <p><?php echo "player: ";
-    echo($this->session->userdata('playername')); ?></p>
     <h2 class="left thin">PLAYERS</h2>
 </div>
 

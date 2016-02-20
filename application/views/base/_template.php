@@ -23,7 +23,6 @@ if (!defined('APPPATH'))
             <!-- Page Content  -->
             <div class="section no-pad-bot" id="index-banner">
                 <div class="container">
-                    <!-- <h1 class="header center teal-text">{pagetitle}</h1> -->
                     <div class="row ">
                         <div id="content">
                             {content}

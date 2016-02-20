@@ -34,3 +34,5 @@ Changes to the lab will be detailed in this log file.
 - Added equity and net worth queries for a player
 - Implemented routing on stock-history page
 - Refactored models
+- Implemented routing on player-portfolio page
+- Set temporary default player-portfolio view to be blank

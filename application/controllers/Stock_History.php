@@ -60,7 +60,7 @@ class Stock_History extends MY_Controller {
      */
     function generateTable($stock) {
         //sets the table style
-        $template = array('table_open' => '<table class="highlight">');
+        $template = array('table_open' => '<table class="bordered highlight centered portfolio">');
         $this->table->set_template($template);
 
         $this->table->set_heading('Code', 'Date', 'Stock Movement',

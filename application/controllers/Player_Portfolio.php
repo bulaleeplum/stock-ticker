@@ -70,6 +70,9 @@ class Player_Portfolio extends MY_Controller {
      * @return mixed The generated table
      */
     function generateTradingActivityTable($player) {
+        //sets the table style
+        $template = array('table_open' => '<table class="bordered highlight centered portfolio">');
+        $this->table->set_template($template);
         $this->table->set_heading('Stock Code', 'Transaction', 'Date');
         foreach ($player as $row) {
             $this->table->add_row($row);
@@ -84,6 +87,9 @@ class Player_Portfolio extends MY_Controller {
      * @return mixed The generated table
      */
     function generateCurrentHoldingsTable($player) {
+        //sets the table style
+        $template = array('table_open' => '<table class="bordered highlight centered portfolio">');
+        $this->table->set_template($template);
         $this->table->set_heading('Stock Code','Cash', 'Date');
         foreach ($player as $row) {
             $this->table->add_row($row);

@@ -7,15 +7,11 @@
     </form>
     <label class="active">View portfolio</label>
 </div>
-<!--
-<section id="section-trading-activity">
-    <h4>Trading Activity</h4>
-</section>
-<section id="section-current-holdings">
-    <h4>Current Holdings</h4>
-</section>
--->
+<div class='div-portfolio'>
+<h3>Trading Activity</h3>
 {trading_activity}
+</div>
+<div class='div-portfolio'>
+<h3>Current Holdings</h3>
 {holdings}
-</body>
-</html>
+</div>

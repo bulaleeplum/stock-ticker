@@ -39,3 +39,4 @@ Changes to the lab will be detailed in this log file.
 - Implemented stock dropdown generation
 - Fixed dropdown generation
 - Implemented initial homepage view with equity
+- Formatted stock history and player portfolio tables

@@ -19,19 +19,19 @@ class Player_Portfolio extends MY_Controller {
         $this->data['pagetitle'] = 'Player Portfolio';
         $this->data['pagebody'] = 'player_portfolio';
         $this->loadPlayerNamesToOptions();
-        $this->loadCurrentHoldings();
-        $this->loadTradingActivity();
-        $this->loadEquity();
-        $this->loadNetWorth();
+
+        $this->data['trading_activity'] = NULL;
+        $this->data['holdings'] = NULL;
+
         $this->render();
     }
 
     /**
-     * Query the StocksModel Players table. Set each player row as a dropdown option.
+     * Query the PortfolioModel Players table. Set each player row as a dropdown option.
      */
     function loadPlayerNamesToOptions() {
         $options = "";
-        $players = $this->StocksModel->getPlayers();
+        $players = $this->PortfolioModel->getPlayers();
         foreach ($players as $row) {
             $options .= "<option value=" . $row['Player'] . ">" . $row['Player'] . "</option>";
         }
@@ -39,55 +39,56 @@ class Player_Portfolio extends MY_Controller {
     }
 
     /**
-     * Load the current holdings table for the portfolio selected
+     * Routing function for the specific player
      */
-    function loadCurrentHoldings() {
-        $this->table->set_heading('Stock Code','Cash', 'Date');
-        $selectedPortfolio = $this->input->post('portfolio-select');
-        $this->data['playerName'] = $selectedPortfolio;
-
-        if (!empty($selectedPortfolio)) {
-            $portfolio = $this->StocksModel->getCurrentHoldings
-            ($selectedPortfolio);
-            foreach ($portfolio as $row) {
-                $this->table->add_row($row);
-            }
-        }
-        $this->data['holdings'] = $this->table->generate();
+    function getSpecificPortfolio() {
+        $player = $this->input->get('portfolio-select');
+        redirect("player-portfolio/$player");
     }
 
     /**
-     * Load the trading activity table for the portfolio selected.
+     * Displays a given portfolio with tables of trading activity and current holdings
+     * @param $player the portfolio player
      */
-    function loadTradingActivity() {
+    function displayPortfolio($player) {
+        $this->data['pagetitle'] = $player;
+        $this->data['pagebody'] = 'player_portfolio';
+        $this->loadPlayerNamesToOptions();
+
+        $tradingActivity = $this->PortfolioModel->getTradingActivity($player);
+        $this->data['trading_activity'] = $this->generateTradingActivityTable($tradingActivity);
+
+        $currentHoldings = $this->PortfolioModel->getCurrentHoldings($player);
+        $this->data['holdings'] = $this->generateCurrentHoldingsTable($currentHoldings);
+
+        $this->render();
+    }
+
+    /**
+     * Generates the trading activity table with a given player
+     * @param $player the portfolio player
+     * @return mixed The generated table
+     */
+    function generateTradingActivityTable($player) {
         $this->table->set_heading('Stock Code', 'Transaction', 'Date');
-        $selectedPortfolio = $this->input->post('portfolio-select');
-        $this->data['playerName'] = $selectedPortfolio;
-
-        if (!empty($selectedPortfolio)) {
-            $portfolio = $this->StocksModel->getTradingActivity($selectedPortfolio);
-            foreach ($portfolio as $row) {
-                $this->table->add_row($row);
-            }
+        foreach ($player as $row) {
+            $this->table->add_row($row);
         }
-        $this->data['trading_activity'] = $this->table->generate();
+
+        return $this->table->generate();
     }
 
     /**
-     * Load the equity for the porfolio selected.
+     * Generates the current holdings table with a given player
+     * @param $player the portfolio player
+     * @return mixed The generated table
      */
-    function loadEquity() {
-       $selectedPortfolio = $this->input->post('portfolio-select');
-       $equity = $this->StocksModel->getPlayerEquity($selectedPortfolio);
-       $this->data['equity'] = $equity[0]['equity'];
-    }
+    function generateCurrentHoldingsTable($player) {
+        $this->table->set_heading('Stock Code','Cash', 'Date');
+        foreach ($player as $row) {
+            $this->table->add_row($row);
+        }
 
-    /**
-     * Load the net worth for the portfolio selected.
-     */
-    function loadNetWorth() {
-       $selectedPortfolio = $this->input->post('portfolio-select');
-       $netWorth = $this->StocksModel->getPlayerNetWorth($selectedPortfolio);
-       $this->data['netWorth'] = $netWorth[0]['netWorth'];
+        return $this->table->generate();
     }
 }

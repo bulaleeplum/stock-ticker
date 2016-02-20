@@ -1,5 +1,5 @@
 <div class="input-field col s12">
-    <form method="post">
+    <form method="GET" id="portfolio-form" action="/Player_Portfolio/getSpecificPortfolio">
         <select name="portfolio-select" onchange="this.form.submit()">
             <option value="" disabled selected></option>
             {options}
@@ -15,10 +15,7 @@
     <h4>Current Holdings</h4>
 </section>
 -->
-<h5>{playerName}</h5>
 {trading_activity}
 {holdings}
-equity: {equity}
-net worth: {netWorth}
 </body>
 </html>

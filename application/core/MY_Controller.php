@@ -42,7 +42,7 @@ class MY_Controller extends CI_Controller {
 
         // load in the page content
         $this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
-        $this->data['data'] = &$this->data;
+        $this->data['data'] = $this->data;
 
         // load the template
         $this->parser->parse('base/_template', $this->data);

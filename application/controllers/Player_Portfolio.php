@@ -102,7 +102,7 @@ class Player_Portfolio extends MY_Controller {
      * @return mixed The generated table
      */
     function generateCurrentHoldingsTable($player) {
-        $this->table->set_heading('Stock Code','Cash', 'Date');
+        $this->table->set_heading('Stock Code','Quantity', 'Date');
         foreach ($player as $row) {
             $this->table->add_row($row);
         }

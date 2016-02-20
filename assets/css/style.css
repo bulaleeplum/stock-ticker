@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+.page-footer {
+    margin: 0 !important;
+}
+
+.table.highlight:hover:active {
+    text-decoration-color: black;
+}
+
+.modal {
+    height: 500px;
+}
+
+.parallax-container {
+    height: 350px;
+}

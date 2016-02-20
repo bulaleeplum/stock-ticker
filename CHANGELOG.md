@@ -34,3 +34,4 @@ Changes to the lab will be detailed in this log file.
 - Added equity and net worth queries for a player
 - Implemented routing on stock-history page
 - Refactored models
+- Implemented stock dropdown generation

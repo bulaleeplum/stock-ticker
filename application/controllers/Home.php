@@ -3,31 +3,51 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends MY_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
- 	function __construct()
-    {
+ 	function __construct() {
         parent::__construct();
     }
 
     function index() {
         $this->data['pagetitle'] = 'Home';
 		$this->data['pagebody'] = 'home';
-        $this->loadEquity();
-        $this->loadNetWorth();
+
+        $this->load->model("HomeModel");
+        $this->load->model("StockHistory");
+        $this->load->model("PortfolioModel");
+
+
+        $stocks = $this->StockHistory->getStocks();
+
+        $stockList = array();
+        foreach($stocks as $stock) {
+            $stockList[] = $stock;
+        }
+
+        $this->data['stockList'] = $stockList;
+
+        $players = $this->PortfolioModel->getPlayers();
+
+        $playerList = array();
+        foreach($players as $player) {
+
+            $equity = $this->HomeModel->getPlayerEquity($player["Player"]);
+
+            // echo $equity[0]["equity"];
+
+            // array_push($player, $equity[0]["equity"]);
+
+            $player["equity"] = $equity[0]["equity"];
+
+            echo $player["equity"];
+
+            $playerList[] = $player;
+        }
+
+        $this->data['playerList'] = $playerList;
+
+
+        // $this->loadEquity();
+        // $this->loadNetWorth();
     	$this->render();
     }
 

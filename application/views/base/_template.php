@@ -23,9 +23,8 @@ exit('No direct script access allowed');
             <!-- Page Content  -->
             <div class="section no-pad-bot" id="index-banner">
                 <div class="container">
-                    <br><br>
-                    <h1 class="header center teal-text">{pagetitle}</h1>
-                    <div class="row center">
+                    <!-- <h1 class="header center teal-text">{pagetitle}</h1> -->
+                    <div class="row ">
                         <div id="content">
                             {content}
                         </div>

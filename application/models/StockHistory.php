@@ -62,7 +62,7 @@ class StockHistory extends CI_Model {
      * Gets the stocks code and name values
      */
     function getStocks() {
-        $this->db->select('code, name');
+        $this->db->select('code, name, value');
         $this->db->from('stocks');
         $query=$this->db->get();
 

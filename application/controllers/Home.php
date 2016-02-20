@@ -6,7 +6,9 @@ class Home extends MY_Controller {
  	function __construct() {
         parent::__construct();
     }
-
+    /**
+     * Generates homepage and grabs all stocks and players.
+     */
     function index() {
         $this->data['pagetitle'] = 'Home';
 		$this->data['pagebody'] = 'home';

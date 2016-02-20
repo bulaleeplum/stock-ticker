@@ -15,39 +15,26 @@ class Home extends MY_Controller {
         $this->load->model("StockHistory");
         $this->load->model("PortfolioModel");
 
-
         $stocks = $this->StockHistory->getStocks();
+        $players = $this->PortfolioModel->getPlayers();
 
         $stockList = array();
+        $playerList = array();
+
         foreach($stocks as $stock) {
             $stockList[] = $stock;
         }
 
-        $this->data['stockList'] = $stockList;
-
-        $players = $this->PortfolioModel->getPlayers();
-
-        $playerList = array();
         foreach($players as $player) {
 
             $equity = $this->HomeModel->getPlayerEquity($player["Player"]);
-
-            // echo $equity[0]["equity"];
-
-            // array_push($player, $equity[0]["equity"]);
-
             $player["equity"] = $equity[0]["equity"];
-
-            echo $player["equity"];
-
             $playerList[] = $player;
         }
 
+        $this->data['stockList'] = $stockList;
         $this->data['playerList'] = $playerList;
 
-
-        // $this->loadEquity();
-        // $this->loadNetWorth();
     	$this->render();
     }
 

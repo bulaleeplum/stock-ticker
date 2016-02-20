@@ -78,8 +78,9 @@ class Stock_History extends MY_Controller {
      */
     function generateDropdown() {
         $options = "";
-        $players = $this->StockHistory->getStocks();
-        foreach ($players as $row) {
+        $stocks = $this->StockHistory->getStocks();
+        foreach ($stocks as $row) {
+            echo $row['code'];
             $options .= "<option value=" . $row['code'] . ">" . $row['name'] .
                 "</option>";
         }

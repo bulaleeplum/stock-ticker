@@ -57,11 +57,13 @@
             <div class="col s12 m6 l4 left">
                 <div class="card teal lighten-1">
                     <div class="card-content white-text">
-                        <span class="card-title left">
+                        <span class="card-title">
                             <a class="light-blue-text text-darken-4" href="/player-portfolio/{Player}">{Player}</a>
                         </span>
-                        <span class="card-title center">${equity} equity</span>
-                        <span class="card-title right">${Cash} cash</span>
+                        <div class="row">
+                            <div class="col s6"><p>${equity} equity</p></div>
+                            <div class="col s6"><p>${Cash} cash</p></div>
+                        </div>
                     </div>
                 </div>
             </div>

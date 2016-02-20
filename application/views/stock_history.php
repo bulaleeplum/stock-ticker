@@ -1,6 +1,7 @@
 <br><br>
 
 <div class="container white-text">
+    <h1 class="header center thin">Stock History</h1>
     <div class="input-field col s12 m4 l4">
         <form method="GET" action="/Stock_History/getSpecificStock">
             <select name="stock_select" onchange="this.form.submit()">

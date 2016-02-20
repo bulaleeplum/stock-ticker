@@ -21,22 +21,43 @@ class MY_Controller extends CI_Controller {
 	 * Constructor.
 	 * Establish view parameters & load common helpers
 	 */
-	function __construct()
-	{
+	function __construct() {
         parent::__construct();
         $this->data = array();
         $this->data['title'] = 'Stock Ticker'; 		// default title
         $this->data['pagetitle'] = 'Stock Ticker'; 	// default page
         $this->load->library('parser');
+
+
+        $this->load->model("PortfolioModel");
+        $players = $this->PortfolioModel->getPlayers();
+
+        $playerList = array();
+
+        foreach($players as $player) {
+            $playerList[] = $player;
+        }
+
+        $this->data['playerList'] = $playerList;
+        $session_id = $this->session->userdata('playername');
+        if ($session_id) {
+            $this->data['username'] = $session_id;
+        }
 	}
 
 	/**
 	 * Render this page
 	 */
-	function render()
-	{
+	function render() {
 
-        // laod in header and footer
+        // check logged in status to choose appropriate heading
+        if (isset($this->data['username'])) {
+            $this->data['logged_in_status'] = $this->parser->parse('base/_header-loggedin', $this->data, true);
+        } else {
+            $this->data['logged_in_status'] = $this->parser->parse('base/_header-loggedout', $this->data, true);
+        }
+
+        // load in header and footer
         $this->data['header'] = $this->parser->parse('base/_header', $this->data, true);
         $this->data['footer'] = $this->parser->parse('base/_footer', $this->data, true);
 

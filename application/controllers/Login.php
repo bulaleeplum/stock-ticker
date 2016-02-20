@@ -8,7 +8,8 @@ class Login extends MY_Controller {
     }
 
     /**
-     *
+     * Grabs all players from database to be added to a list
+     * for possible players to log in to.
      */
     function index() {
         $this->load->model("PortfolioModel");

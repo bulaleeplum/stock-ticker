@@ -19,9 +19,6 @@ class Home extends MY_Controller {
         $stocks = $this->StockHistory->getStocks();
         $players = $this->PortfolioModel->getPlayers();
 
-        $this->importCSV2Array(SERVER . 'stocks', 'r' );
-
-
         $stockList = array();
         $playerList = array();
 

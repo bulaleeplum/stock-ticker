@@ -9,22 +9,38 @@
 <!-- Modal Structure For Login -->
 <div id="modal1" class="modal">
     <div class="modal-content">
-        <div class="row blue-grey-text">
-        <h4>Login</h4>
-            <form method="POST" action="/login" role="login">
-                <div class="form-group login-input">
-                    <select name="playername" class="form-control">
-                        <option value="" disabled selected>Choose Your Player</option>
-                        {playerList}
-                        <option value="{Player}">{Player}</option>
-                        {/playerList}
-                    </select>
-                </div>
-                <br><br><br><br>
+     <div class="row blue-grey-text" id="login-header">
+       <h4>Login</h4>
+      </div>
+      <form method="POST" action="/login" role="login">
+      <div class="form-group login-input">
+
+            <div class="modal-row margin">
+              <div class="input-field col s6">
+                <i class="mdi-social-person-outline prefix"></i>
+                <input name="playername" type="text">
+                <label for="playername" class="center-align">Username</label>
+              </div>
+            </div>
+            <div class="modal-row margin">
+              <div class="input-field col s6">
+                <i class="mdi-action-lock-outline prefix"></i>
+                <input id="password" type="password">
+                <label for="password">Password</label>
+              </div>
+            </div>
+            <div class="modal-row">
+              <div class="input-field col s6 m6 l6  login-text">
+                  <input type="checkbox" id="remember-me" />
+                  <label for="remember-me">Remember me</label>
+              </div>
+            </div>
+            <div class="modal-row">
+              <div class="input-field center col s12">
                 <input type="submit" value="Login" class="waves-effect waves-light btn">
-            </form>
+              </div>
+            </div>
         </div>
-    </div>
-    <div class="modal-footer">
+      </form>
     </div>
 </div>

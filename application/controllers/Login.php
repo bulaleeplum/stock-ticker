@@ -13,7 +13,8 @@ class Login extends MY_Controller {
      */
     function index() {
         $this->load->model("PortfolioModel");
-        $player = $_POST['playername'];
+        //$player = $_POST['playername'];
+        $player = $this->input->post('playername');
 
         $this->load->model("PortfolioModel");
         $playerList = $this->PortfolioModel->getPlayers();
@@ -24,7 +25,8 @@ class Login extends MY_Controller {
         }
 
         foreach ($playerResults as $p) {
-            if ($p["Player"] == $_POST['playername']) {
+            //if ($p["Player"] == $_POST['playername']) {
+            if ($p["Player"] == $this->input->post('playername')) {
                 $this->session->set_userdata('playername', $_POST['playername']);
             }
         }

@@ -16,8 +16,8 @@ class Home extends MY_Controller {
 
         $stocks = $this->StockHistory->getStocks();
         $players = $this->PortfolioModel->getPlayers();
-        $this->load->model('GameModel');
 
+        $this->load->model('GameModel');
 
         $stockList = array();
         $playerList = array();

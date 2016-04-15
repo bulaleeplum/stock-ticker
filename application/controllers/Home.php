@@ -2,8 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-define('SERVER', ('http://bsx.jlparry.com/data/'));
-define('PORT', 80);
 class Home extends MY_Controller {
 
  	function __construct() {
@@ -18,6 +16,8 @@ class Home extends MY_Controller {
 
         $stocks = $this->StockHistory->getStocks();
         $players = $this->PortfolioModel->getPlayers();
+
+        $this->load->model('GameModel');
 
         $stockList = array();
         $playerList = array();

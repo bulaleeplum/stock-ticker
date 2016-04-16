@@ -16,6 +16,7 @@ class Home extends MY_Controller {
 		$this->data['pagebody'] = 'home';
 
 
+        $this->StockHistory->clearGameTables();
         $this->StockHistory->insertData('stocks', $this->importCSV2Array
         (SERVER .
             'stocks', 'r'));

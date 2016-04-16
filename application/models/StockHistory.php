@@ -73,8 +73,10 @@ class StockHistory extends CI_Model {
         $this->db->insert_batch($table, $data);
     }
 
-    function clearTable($table) {
-        $this->db->empty_table($table);
+    function clearGameTables() {
+        $this->db->empty_table('movements');
+        $this->db->empty_table('stocks');
+        $this->db->empty_table('transactions');
     }
 
 }

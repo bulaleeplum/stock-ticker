@@ -15,23 +15,22 @@ class Home extends MY_Controller {
         $this->data['pagetitle'] = 'Home';
 		$this->data['pagebody'] = 'home';
         $stockData = $this->importCSV2Array
-        (SERVER . 'data/stocks', 'r');
+        (SERVER_BACKUP . 'data/stocks', 'r');
         $movementData = $this->importCSV2Array
-        (SERVER . 'data/movement', 'r');
+        (SERVER_BACKUP . 'data/movement', 'r');
         $transactionsData = $this->importCSV2Array
-        (SERVER . 'data/transactions', 'r');
+        (SERVER_BACKUP . 'data/transactions', 'r');
 
 
         $this->StockHistory->clearGameTables();
 
-        if(!isset($stockData) || !isset($movementData) || !isset($transactionsData)) {
-            $this->data['pagebody'] = 'Error loading data';
-            return;
-        }
-
         $this->StockHistory->insertData('stocks', $stockData);
         $this->StockHistory->insertData('movements', $movementData);
-        $this->StockHistory->insertData('transactions', $transactionsData);
+
+        if(!empty($transactionsData)) {
+           $this->StockHistory->insertData('transactions', $transactionsData);
+        }
+
 
         $this->load->model('GameModel');
         $this->GameModel->getGameData();

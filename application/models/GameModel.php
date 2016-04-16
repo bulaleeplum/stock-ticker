@@ -15,7 +15,7 @@
         }
 
         function getGameData() {
-            $xmlData = simplexml_load_file(SERVER . 'status');
+            $xmlData = simplexml_load_file(SERVER_BACKUP . 'status');
             $gameData = array();
 
             $gameData['round'] = (string) $xmlData->round;
@@ -27,7 +27,7 @@
             $gameData['alarm'] = (string) $xmlData->alarm;
             $gameData['now'] = (string) $xmlData->now;
             $gameData['countdown'] = (string) $xmlData->countdown;
-            
+
             return $gameData;
         }
 

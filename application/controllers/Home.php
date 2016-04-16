@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-define('SERVER_BACKUP', ('http://www.comp4711bsx.local/data/'));
-define('SERVER', ('http://bsx.jlparry.com/data/'));
+define('SERVER_BACKUP', ('http://www.comp4711bsx.local/'));
+define('SERVER', ('http://bsx.jlparry.com/'));
 
 class Home extends MY_Controller {
 
@@ -14,16 +14,27 @@ class Home extends MY_Controller {
     function index() {
         $this->data['pagetitle'] = 'Home';
 		$this->data['pagebody'] = 'home';
+        $stockData = $this->importCSV2Array
+        (SERVER . 'data/stocks', 'r');
+        $movementData = $this->importCSV2Array
+        (SERVER . 'data/movement', 'r');
+        $transactionsData = $this->importCSV2Array
+        (SERVER . 'data/transactions', 'r');
 
 
         $this->StockHistory->clearGameTables();
-        $this->StockHistory->insertData('stocks', $this->importCSV2Array
-        (SERVER .
-            'stocks', 'r'));
-        $this->StockHistory->insertData('movements', $this->importCSV2Array
-        (SERVER . 'movement', 'r'));
-        $this->StockHistory->insertData('transactions', $this->importCSV2Array
-        (SERVER . 'transactions', 'r'));
+
+        if(!isset($stockData) || !isset($movementData) || !isset($transactionsData)) {
+            $this->data['pagebody'] = 'Error loading data';
+            return;
+        }
+
+        $this->StockHistory->insertData('stocks', $stockData);
+        $this->StockHistory->insertData('movements', $movementData);
+        $this->StockHistory->insertData('transactions', $transactionsData);
+
+        $this->load->model('GameModel');
+        $this->GameModel->getGameData();
 
         $stocks = $this->StockHistory->getStocks();
         $players = $this->PortfolioModel->getPlayers();

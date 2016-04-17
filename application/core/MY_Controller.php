@@ -9,6 +9,9 @@
  * for the content on the page.
  * -------------------------------------------------------------------------
  */
+define('SERVER_BACKUP', ('http://www.comp4711bsx.local/'));
+define('SERVER', ('http://bsx.jlparry.com/'));
+define('TEAM', ('O02'));
 class MY_Controller extends CI_Controller {
 
 	protected $data = array();	  // parameters for view components
@@ -68,6 +71,37 @@ class MY_Controller extends CI_Controller {
         // load the template
         $this->parser->parse('base/_template', $this->data);
 	}
+
+    /**
+     * @param $filename: Address to the server file
+     * @return string the server data as an array
+     */
+    protected function importCSV2Array($filename) {
+        $row = 0;
+        $col = 0;
+        $handle = @fopen($filename, "r");
+        if ($handle) {
+            while (($row = fgetcsv($handle, 4096)) !== false) {
+                if (empty($fields)) {
+                    $fields = $row;
+                    continue;
+                }
+
+                foreach ($row as $k => $value) {
+                    $results[$col][$fields[$k]] = $value;
+                }
+                $col++;
+                unset($row);
+            }
+            if (!feof($handle)) {
+                echo "Error: unexpected fgets() failng";
+            }
+            fclose($handle);
+        } else {
+            echo "fopen failed";
+        }
+        return isset($results) ? $results : "";
+    }
 }
 
 /* End of file MY_Controller.php */

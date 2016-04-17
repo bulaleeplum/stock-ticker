@@ -1,7 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-define('SERVER_BACKUP', ('http://www.comp4711bsx.local/'));
-define('SERVER', ('http://bsx.jlparry.com/'));
 
 class Home extends MY_Controller {
 

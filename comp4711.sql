@@ -84,6 +84,9 @@ CREATE TABLE `movements` (
 
 CREATE TABLE `players` (
   `Player` varchar(6) DEFAULT NULL,
+  `Password` varchar(30) NOT NULL,
+  `Role` varchar(30) NOT NULL,
+  `ID` varchar(30) NOT NULL,
   `Cash` int(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

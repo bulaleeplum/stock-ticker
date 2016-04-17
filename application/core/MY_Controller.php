@@ -9,9 +9,9 @@
  * for the content on the page.
  * -------------------------------------------------------------------------
  */
-define('SERVER_BACKUP', ('http://www.comp4711bsx.local/'));
-define('SERVER', ('http://bsx.jlparry.com/'));
-define('TEAM', ('O02'));
+if(!defined('SERVER_BACKUP')) define('SERVER_BACKUP', ('http://www.comp4711bsx//.local/'));
+if(!defined('SERVER')) define('SERVER', ('http://bsx.jlparry.com/'));
+if(!defined('TEAM')) define('TEAM', ('O02'));
 class MY_Controller extends CI_Controller {
 
 	protected $data = array();	  // parameters for view components

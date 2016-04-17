@@ -12,12 +12,12 @@ class Login extends MY_Controller {
      * for possible players to log in to.
      */
     function index() {
-        $this->load->model("PortfolioModel");
-        //$player = $_POST['playername'];
-        $player = $this->input->post('playername');
+        $player = $_POST['playername'];
+        $password = $_POST['password'];
+        $role = "";
+        $id = "";
 
-        $this->load->model("PortfolioModel");
-        $playerList = $this->PortfolioModel->getPlayers();
+        $playerList = $this->PlayersModel->getAllPlayers();
 
         $playerResults = array();
         foreach ($playerList as $p) {
@@ -25,12 +25,18 @@ class Login extends MY_Controller {
         }
 
         foreach ($playerResults as $p) {
-            //if ($p["Player"] == $_POST['playername']) {
-            if ($p["Player"] == $this->input->post('playername')) {
+            if ($p['Player'] == $player && password_verify($password, $p['Password'])) {
+                $role = $p['Role'];
+                $id = $p['ID'];
+
                 $this->session->set_userdata('playername', $_POST['playername']);
+                $this->session->set_userdata('role', $role);
+                $this->session->set_userdata('id', $id);
+                redirect("/player-portfolio/$player");
+            } else {
+                echo $p["Player"];
+                echo "you broke it";
             }
         }
-
-        redirect("/player-portfolio/$player");
     }
 }

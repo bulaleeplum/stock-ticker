@@ -21,8 +21,6 @@ class Home extends MY_Controller {
 
         $this->token = $this->registerAgent();
 
-        $test = $this->buyStock("APPL", "Donald", 10);
-        $this->sellStock('APPL', 'Donald', 2 ,$test['token']);
         $this->load->model('GameModel');
         $this->GameModel->getGameData();
 

@@ -21,6 +21,18 @@ class Stock_History extends MY_Controller {
 
         $this->data['pagetitle'] = 'Stock History';
         $this->data['pagebody'] = 'stock_history';
+
+
+        $movementData = $this->importCSV2Array
+        (SERVER . 'data/movement', 'r');
+        $transactionsData = $this->importCSV2Array
+        (SERVER . 'data/transactions', 'r');
+
+        $this->StockHistory->insertData('movements', $movementData);
+        if(!empty($transactionsData)) {
+            $this->StockHistory->insertData('transactions', $transactionsData);
+        }
+
         $this->data['stocks'] = $this->generateDropdown();
         $mostRecent = $this->StockHistory->getMostRecentStock();
         $stockHistory = $this->StockHistory->getStockHistory($mostRecent[0]['code']);

@@ -24,10 +24,58 @@ main {
     text-decoration-color: black;
 }
 
+.modal-content {
+    height: 100%;
+    width: 100%;
+}
+
 .modal {
     height: 500px;
+    background-color: #fafafa;
+    border-radius: 20px;
+    width: 25%;
+}
+
+.modal .modal-content {
+  background-color: #1B2327;
+  padding: 24px;
+  border-radius: 20px;
+}
+
+.modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-flat {
+  float: none;
+  margin: 20px 0;
+  overflow-x: hidden;
+}
+
+.modal .modal-footer {
+  border-radius: 20px;
+}
+
+.modal-row {
+    height: 50px;
+}
+
+.modal-login-btn {
+    margin-top: 50px;
 }
 
 .parallax-container {
     height: 350px;
+}
+
+.dumb-login-button {
+    padding-left: 0rem;
+}
+
+#login-header {
+    text-align: center;
+}
+
+.div-register-now > p {
+  text-align: center;
+}
+
+.enter-details {
+  padding-top: 0;
 }

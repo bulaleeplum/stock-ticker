@@ -1,6 +1,5 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 /**
  * Model to get data from the stockticker database.
  */
@@ -52,9 +51,7 @@ class StockHistory extends CI_Model {
         $this->db->from('movements');
         $this->db->where('datetime = (SELECT MAX(datetime) FROM movements)',
             NULL, FALSE);
-
         $query = $this->db->get();
-
         return $query->result_array();
     }
 
@@ -65,7 +62,21 @@ class StockHistory extends CI_Model {
         $this->db->select('code, name, value');
         $this->db->from('stocks');
         $query=$this->db->get();
-
         return $query->result_array();
     }
+
+    /**
+     * @param $table: The table to clear and insert data into
+     * @param $data: The data to insert to the table.
+     */
+    function insertData($table, $data) {
+        $this->db->insert_batch($table, $data);
+    }
+
+    function clearGameTables() {
+        $this->db->empty_table('movements');
+        $this->db->empty_table('stocks');
+        $this->db->empty_table('transactions');
+    }
+
 }

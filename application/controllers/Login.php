@@ -32,8 +32,8 @@ class Login extends MY_Controller {
                 $id = $p["ID"];
 
                 $this->session->set_userdata('playername', $_POST['playername']);
-                //$this->session->set_userdata('role', $role);
-                //$this->session->set_userdata('id', $id);
+                $this->session->set_userdata('role', $role);
+                $this->session->set_userdata('id', $id);
                 redirect("/player-portfolio/$player");
             } else {
                 echo "you broke it";

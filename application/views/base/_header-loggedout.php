@@ -71,8 +71,8 @@
                     <div class="modal-row margin">
                         <div class="input-field col s6">
                             <i class="mdi-action-lock-outline prefix"></i>
-                            <input name="confirmPwd" id="confirmPwd" type="password">
-                            <label for="confirmPwd">Confirm password</label>
+                            <input name="passwordConfirm" id="passwordConfirm" type="password">
+                            <label for="passwordConfirm">Confirm password</label>
                         </div>
                     </div>
                     <div class="modal-row center-align">

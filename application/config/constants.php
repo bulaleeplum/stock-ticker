@@ -1,6 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
++// logged in user roles
+ +define('ROLE_PLAYER','player');
+ +define('ROLE_ADMIN','admin');
+
 /*
 |--------------------------------------------------------------------------
 | Display Debug backtrace

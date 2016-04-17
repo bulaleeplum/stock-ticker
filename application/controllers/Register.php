@@ -12,8 +12,10 @@ class Register extends MY_Controller {
             $success = false;
         }
         if ($success) {
-            $this->PlayersModel->addUser($_POST['Player'], password_hash(($_POST['Password']), PASSWORD_DEFAULT));
+            $this->PlayersModel->registerPlayer($_POST['playername'], password_hash(($_POST['password']), PASSWORD_DEFAULT));
+            redirect('/');
+        } else {
+            echo "do you even know how to register";
         }
-        redirect('/player-portfolio');
     }
 }

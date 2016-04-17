@@ -33,7 +33,7 @@ main {
     height: 500px;
     background-color: #fafafa;
     border-radius: 20px;
-    width: 30%;
+    width: 25%;
 }
 
 .modal .modal-content {
@@ -53,7 +53,7 @@ main {
 }
 
 .modal-row {
-    height: 80px;
+    height: 50px;
 }
 
 .modal-login-btn {
@@ -70,4 +70,12 @@ main {
 
 #login-header {
     text-align: center;
+}
+
+.div-register-now > p {
+  text-align: center;
+}
+
+.enter-details {
+  padding-top: 0;
 }

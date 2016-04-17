@@ -25,17 +25,16 @@ class Login extends MY_Controller {
         }
 
         foreach ($playerResults as $p) {
-            echo $p["Player"];
-            //if ($p["Player"] == $player && password_verify($password, $p["Password"])) {
-            if ($p["Player"] == $player) {
-                $role = $p["Role"];
-                $id = $p["ID"];
+            if ($p['Player'] == $player && password_verify($password, $p['Password'])) {
+                $role = $p['Role'];
+                $id = $p['ID'];
 
                 $this->session->set_userdata('playername', $_POST['playername']);
                 $this->session->set_userdata('role', $role);
                 $this->session->set_userdata('id', $id);
                 redirect("/player-portfolio/$player");
             } else {
+                echo $p["Player"];
                 echo "you broke it";
             }
         }

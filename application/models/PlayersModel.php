@@ -9,8 +9,8 @@ class PlayersModel extends CI_Model {
     function registerPlayer($playername, $password) {
         $this->load->database();
         $userData = array(
-            'player' => $playername,
-            'password' => $password
+            'Player' => $playername,
+            'Password' => $password
         );
 
         $this->db->insert('players', $userData);

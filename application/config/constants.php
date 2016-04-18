@@ -2,8 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 // server URL paths
-define('SERVER_BACKUP', ('http://www.comp4711bsx.local/'));
-define('SERVER', ('http://bsx.jlparry.com/'));
+define('SERVER_BACKUP', ('http://www.comp4711bsx.local/')); // curtis' backup server
+define('SERVER', ('http://bsx.jlparry.com/'));           // actual server
+// define('SERVER', ('http://comp4711.bsx.local:8080/'));      // localhost server
 
 +// logged in user roles
  +define('ROLE_PLAYER','player');

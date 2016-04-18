@@ -1,33 +1,47 @@
-<div class="container">
+<div class="container white-text">
     <div class="section">
-        <!--   Icon Section   -->
-        <div class="row">
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-                    <h5 class="white-text center">Speeds up development</h5>
-                    <p class="white-text light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-                </div>
-            </div>
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-                    <h5 class="white-text center">User Experience Focused</h5>
-                    <p class="white-text light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-                </div>
-            </div>
-            <div class="col s12 m4">
-                <div class="icon-block">
-                    <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-                    <h5 class="white-text center">Easy to work with</h5>
-                    <p class="white-text light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-                </div>
-            </div>
+        <div class="container">
+            <h4 class="header ">{username}'s Portfolio</h3>
+            <h5 class="header  thin">Cash:   {playercash}</h4>
+            <h5 class="header  thin">Equity:   {playerequity}</h4>
+            <br>
+            <h4 class="header  thin">Trading Activity</h4>
+            {trading_activity}
+<!--             <h4 class="header center thin">Current Holdings</h4>
+            {holdings} -->
         </div>
     </div>
     <br><br>
     <div class="section">
-        <a class="blue lighten-2 waves-effect waves-dark btn">Buy</a>
-        <a class="blue lighten-2 waves-effect waves-dark btn">Sell</a>
+        <div class="input-field container">
+            <form method="POST" action="Play/makeMove">
+                <select required name="stock_select">
+                    <option value="">Choose Stock</option>
+                    {stocks}
+                </select>
+
+                <select name="stock_amount" id="">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                    <option value="70">70</option>
+                    <option value="80">80</option>
+                    <option value="90">90</option>
+                    <option value="100">100</option>
+                </select>
+
+                <select name="stock_action" id="">
+                    <option value="buy">Buy</option>
+                    <option value="sell">Sell</option>
+                </select>
+
+                <button class="btn waves-effect waves-light center" type="submit" name="action">Submit
+                </button>
+            </form>
+        </div>
+
     </div>
 </div>

@@ -55,6 +55,7 @@ $route['player-portfolio'] = 'Player_Portfolio/index';
 $route['stock-history/([a-zA-Z]+)'] = 'Stock_History/displayStock/$1';
 $route['player-portfolio/([a-zA-Z]+)'] = 'Player_Portfolio/displayPortfolio/$1';
 $route['register'] = 'register';
+$route['administration'] = 'Administration';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

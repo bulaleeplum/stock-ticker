@@ -1,8 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Home extends MY_Controller {
-
+    public $token;
  	function __construct() {
         parent::__construct();
     }
@@ -12,6 +11,11 @@ class Home extends MY_Controller {
     function index() {
         $this->data['pagetitle'] = 'Home';
 		$this->data['pagebody'] = 'home';
+        $stockData = $this->importCSV2Array(SERVER . 'data/stocks', 'r');
+
+
+        $this->StockHistory->clearGameTables();
+        $this->StockHistory->insertData('stocks', $stockData);
 
         $stocks = $this->StockHistory->getStocks();
         $players = $this->PortfolioModel->getPlayers();

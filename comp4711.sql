@@ -100,6 +100,13 @@ INSERT INTO `players` (`Player`, `Cash`) VALUES
 ('George', 2000),
 ('Henry', 2500);
 
+--
+-- Dumping data for table `players`
+--
+
+INSERT INTO `players` (`Player`, `Password`, `Role`) VALUES
+('admin', '$2y$10$Dl5nweWKza0I4r/kmInD8uTDfRaGIgDQCGPTRP7JkiyB88Hgb3LYO', 'admin');
+
 -- --------------------------------------------------------
 
 --
@@ -121,12 +128,12 @@ CREATE TABLE `stocks` (
 
 CREATE TABLE `transactions` (
   `DateTime` varchar(19) DEFAULT NULL,
-  `Player` varchar(6) DEFAULT NULL,
+  `Player` varchar(60) DEFAULT NULL,
   `Stock` varchar(4) DEFAULT NULL,
   `Trans` varchar(4) DEFAULT NULL,
   `Quantity` int(4) DEFAULT NULL,
   `seq` int(11) NOT NULL,
-  `agent` varchar(6) NOT NULL
+  `agent` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -10,12 +10,15 @@ class Play extends MY_Controller {
      * Generates homepage and grabs all stocks and players.
      */
     function index() {
+        // if ($this->session->userdata('role') != ROLE_PLAYER) {
+        //     redirect('/');
+        // }
+
         $this->data['pagetitle'] = 'Play';
         $this->data['pagebody'] = 'play';
 
         $this->load->model('GameModel');
         $this->load->model('PlayModel');
-        $this->token = $this->registerAgent();
         $this->GameModel->getGameData();
 
         $player = $this->data['username'];
@@ -32,6 +35,7 @@ class Play extends MY_Controller {
     }
 
     function makeMove() {
+        $this->token = $this->registerAgent();
         $stock = $this->input->post('stock_select');
         $amount = $this->input->post('stock_amount');
         $action = $this->input->post('stock_action');
@@ -42,7 +46,7 @@ class Play extends MY_Controller {
         } else {
             $this->sellStock($stock, $player, $amount, 1234);
         }
-        // redirect('/play');
+        redirect('/play');
     }
 
     /**

@@ -7,8 +7,6 @@
             <br>
             <h4 class="header  thin">Trading Activity</h4>
             {trading_activity}
-<!--             <h4 class="header center thin">Current Holdings</h4>
-            {holdings} -->
         </div>
     </div>
     <br><br>

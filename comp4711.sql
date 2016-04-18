@@ -83,7 +83,7 @@ CREATE TABLE `movements` (
 --
 
 CREATE TABLE `players` (
-  `Player` varchar(6) DEFAULT NULL,
+  `Player` varchar(60) DEFAULT NULL,
   `Password` char(60) NOT NULL,
   `Role` varchar(30) NOT NULL,
   `ID` varchar(30) NOT NULL,
